@@ -6,7 +6,7 @@ describe('test/zipkin.test.js', () => {
   let app;
   before(() => {
     app = mock.app({
-      baseDir: 'apps/zipkin-test',
+      baseDir: 'apps/zipkin',
     });
     return app.ready();
   });

@@ -15,4 +15,4 @@ exports.opentracing = {
   collector: {
     zipkin: require('../lib/zipkin_collector'),
   },
-}
+};
