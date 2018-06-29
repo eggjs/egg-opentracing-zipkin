@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * egg-zipkin default config
+ * egg-opentracing-zipkin default config
  * @member Config#zipkin
  * @property {String} endpoint - the host url of zipkin server
  * @property {String} version - the api version
