@@ -40,6 +40,7 @@ describe('test/zipkin.test.js', () => {
       .expect(200);
 
     await sleep(5000);
+    console.log(server.spans);
     const [ app1span1, app1span2 ] = server.spans[0];
     const [ app2span ] = server.spans[1];
 
