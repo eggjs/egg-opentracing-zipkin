@@ -54,7 +54,6 @@ describe('test/zipkin.test.js', () => {
     assert(typeof app1span1.duration === 'number');
     assert(app1span1.localEndpoint.serviceName === 'zipkin1');
     assert(app1span1.localEndpoint.ipv4);
-    assert(app1span1.localEndpoint.ipv6);
     assert(app1span1.remoteEndpoint.ipv4);
     assert(app1span1.remoteEndpoint.port);
     assert(app1span1.tags.appname === 'zipkin1');
@@ -67,7 +66,6 @@ describe('test/zipkin.test.js', () => {
     assert(typeof app1span2.duration === 'number');
     assert(app1span2.localEndpoint.serviceName === 'zipkin1');
     assert(app1span2.localEndpoint.ipv4);
-    assert(app1span2.localEndpoint.ipv6);
     assert(app1span2.remoteEndpoint.ipv6);
     assert(app1span2.remoteEndpoint.port);
     assert(app1span2.tags.appname === 'zipkin1');
@@ -82,7 +80,6 @@ describe('test/zipkin.test.js', () => {
     assert(typeof app2span.duration === 'number');
     assert(app2span.localEndpoint.serviceName === 'zipkin2');
     assert(app2span.localEndpoint.ipv4);
-    assert(app2span.localEndpoint.ipv6);
     assert(app2span.remoteEndpoint.ipv6);
     assert(app2span.remoteEndpoint.port);
     assert(app2span.tags.appname === 'zipkin2');
