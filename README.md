@@ -20,9 +20,7 @@
 [download-image]: https://img.shields.io/npm/dm/egg-zipkin.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-zipkin
 
-<!--
-Description here.
--->
+Report trace infomation to zipkin server in Egg.js.
 
 ## Install
 
@@ -32,8 +30,14 @@ $ npm i egg-zipkin --save
 
 ## Usage
 
+egg-zipkin depends on [egg-opentracing](https://github.com/eggjs/egg-opentracing), you should enable these plugin.
+
 ```js
 // {app_root}/config/plugin.js
+exports.opentracing = {
+  enable: true,
+  package: 'egg-opentracing',
+};
 exports.zipkin = {
   enable: true,
   package: 'egg-zipkin',
@@ -45,14 +49,15 @@ exports.zipkin = {
 ```js
 // {app_root}/config/config.default.js
 exports.zipkin = {
+  endpoint: 'http://locahost:9411',
+  version: 'v2',
 };
 ```
 
+- endpoint: the hostname of zipkin server.
+- version: zipkin API server, default is v2.
+
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 

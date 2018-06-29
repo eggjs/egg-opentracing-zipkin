@@ -19,7 +19,6 @@ module.exports = {
     'webstorm-disable-index',
   ],
   exclude: [
-    './test/fixtures',
     './docs',
     './coverage',
   ],
