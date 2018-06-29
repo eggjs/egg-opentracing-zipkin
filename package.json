@@ -22,11 +22,14 @@
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
     "egg": "^2.9.1",
-    "egg-bin": "^4.7.0",
+    "egg-bin": "^4.7.1",
     "egg-ci": "^1.8.0",
     "egg-mock": "^3.17.2",
+    "egg-opentracing": "^1.1.0",
     "eslint": "^5.0.1",
     "eslint-config-egg": "^7.0.0",
+    "mz-modules": "^2.1.0",
+    "stream-to-array": "^2.3.0",
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
@@ -42,9 +45,8 @@
     "autod": "autod"
   },
   "files": [
-    "app.js",
-    "agent.js",
-    "config"
+    "config",
+    "lib"
   ],
   "ci": {
     "version": "8, 10"

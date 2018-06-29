@@ -4,7 +4,8 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.body = 'hi, ' + this.app.plugins.zipkin.name;
+    const result = await this.ctx.curl('http://127.0.0.1:8001');
+    this.ctx.body = result.data;
   }
 }
 
