@@ -31,6 +31,7 @@ describe('test/zipkin.test.js', () => {
   after(() => app1.close());
   after(() => app2.close());
   after(() => server.stop());
+  afterEach(() => server.restore());
   afterEach(mock.restore);
 
   it('should GET /', async () => {
@@ -39,8 +40,8 @@ describe('test/zipkin.test.js', () => {
       .expect(200);
 
     await sleep(5000);
-    const [ app1span1, app1span2 ] = server.result[0];
-    const [ app2span ] = server.result[1];
+    const [ app1span1, app1span2 ] = server.spans[0];
+    const [ app2span ] = server.spans[1];
 
     assert(app1span1.traceId);
     assert(app1span1.id);
@@ -85,34 +86,47 @@ describe('test/zipkin.test.js', () => {
     assert(app2span.remoteEndpoint.port);
     assert(app2span.tags.appname === 'zipkin2');
   });
+
+  it('should not contain kind when the tag of span.kind is empty', async () => {
+    await app1.httpRequest()
+      .get('/span')
+      .expect(200);
+
+    await sleep(1000);
+    const [ span ] = server.spans[2];
+    assert(!span.kind);
+    assert(span.name === 'test');
+  });
 });
 
-
 function mockZipkinServer(port) {
-  const result = [];
+  const result = {
+    spans: [],
+    restore() {
+      result.spans = [];
+    },
+  };
   const server = http.createServer((req, res) => {
     toArray(req)
       .then(body => {
-        result.push(JSON.parse(body.toString()));
+        result.spans.push(JSON.parse(body.toString()));
         res.writeHead(202, { 'Content-Type': 'text/application' });
         res.end('ok');
       });
   });
-  return {
-    result,
-    start() {
-      return new Promise(resolve => {
-        server.listen(port, () => {
-          resolve();
-        });
+  result.start = () => {
+    return new Promise(resolve => {
+      server.listen(port, () => {
+        resolve();
       });
-    },
-    stop() {
-      return new Promise(resolve => {
-        server.close(() => {
-          resolve();
-        });
-      });
-    },
+    });
   };
+  result.stop = () => {
+    return new Promise(resolve => {
+      server.close(() => {
+        resolve();
+      });
+    });
+  };
+  return result;
 }
