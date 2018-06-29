@@ -51,11 +51,13 @@ exports.zipkin = {
 exports.zipkin = {
   endpoint: 'http://locahost:9411',
   version: 'v2',
+  interval: 1000,
 };
 ```
 
 - endpoint: the hostname of zipkin server.
 - version: zipkin API server, default is v2.
+- interval: how often to sync spans
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
