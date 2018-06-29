@@ -2,5 +2,5 @@
 
 exports.keys = '123456';
 exports.zipkin = {
-  interval: 2000,
+  interval: 3000,
 };

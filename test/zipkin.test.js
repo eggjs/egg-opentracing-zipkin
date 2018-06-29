@@ -90,8 +90,7 @@ describe('test/zipkin.test.js', () => {
       .expect(200);
 
     await sleep(3000);
-    console.log(server.spans);
-    const span = server.spans[2];
+    const span = server.spans[1];
     assert(!span.kind);
     assert(span.name === 'test');
   });
