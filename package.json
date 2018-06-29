@@ -16,7 +16,7 @@
     "zipkin"
   ],
   "dependencies": {
-    "utility": "^1.13.1",
+    "utility": "^1.14.0",
     "zipkin": "^0.13.0",
     "zipkin-transport-http": "^0.13.0"
   },
@@ -30,6 +30,7 @@
     "egg-opentracing": "^1.1.0",
     "eslint": "^5.0.1",
     "eslint-config-egg": "^7.0.0",
+    "is-type-of": "^1.2.0",
     "mz-modules": "^2.1.0",
     "stream-to-array": "^2.3.0",
     "webstorm-disable-index": "^1.2.0"

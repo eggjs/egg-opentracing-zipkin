@@ -5,6 +5,7 @@ const http = require('http');
 const mock = require('egg-mock');
 const sleep = require('mz-modules/sleep');
 const toArray = require('stream-to-array');
+const is = require('is-type-of');
 
 
 describe('test/zipkin.test.js', () => {
@@ -40,9 +41,7 @@ describe('test/zipkin.test.js', () => {
       .expect(200);
 
     await sleep(5000);
-    console.log(server.spans);
-    const [ app1span1, app1span2 ] = server.spans[0];
-    const [ app2span ] = server.spans[1];
+    const [ app1span1, app1span2, app2span ] = server.spans;
 
     assert(app1span1.traceId);
     assert(app1span1.id);
@@ -91,7 +90,7 @@ describe('test/zipkin.test.js', () => {
       .expect(200);
 
     await sleep(1000);
-    const [ span ] = server.spans[2];
+    const span = server.spans[2];
     assert(!span.kind);
     assert(span.name === 'test');
   });
@@ -107,7 +106,12 @@ function mockZipkinServer(port) {
   const server = http.createServer((req, res) => {
     toArray(req)
       .then(body => {
-        result.spans.push(JSON.parse(body.toString()));
+        const ret = JSON.parse(body.toString());
+        if (is.array(ret)) {
+          ret.forEach(s => result.spans.push(s));
+        } else {
+          result.spans.push(ret);
+        }
         res.writeHead(202, { 'Content-Type': 'text/application' });
         res.end('ok');
       });
