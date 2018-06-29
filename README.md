@@ -20,7 +20,7 @@
 [download-image]: https://img.shields.io/npm/dm/egg-zipkin.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-zipkin
 
-Report trace infomation to zipkin server.
+Report trace infomation to zipkin server in Egg.js.
 
 ## Install
 

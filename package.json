@@ -1,7 +1,7 @@
 {
   "name": "egg-zipkin",
   "version": "1.0.0",
-  "description": "zipkin report for egg",
+  "description": "Report trace infomation to zipkin server in Egg.js",
   "eggPlugin": {
     "name": "zipkin",
     "dependencies": [
@@ -11,7 +11,9 @@
   "keywords": [
     "egg",
     "eggPlugin",
-    "egg-plugin"
+    "egg-plugin",
+    "opentracing",
+    "zipkin"
   ],
   "dependencies": {
     "utility": "^1.13.1",
