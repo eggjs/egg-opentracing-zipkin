@@ -1,5 +1,5 @@
 {
-  "name": "egg-zipkin",
+  "name": "egg-opentracing-zipkin",
   "version": "1.0.0",
   "description": "Report trace infomation to zipkin server in Egg.js",
   "eggPlugin": {
@@ -56,12 +56,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-zipkin.git"
+    "url": "git+https://github.com/eggjs/egg-opentracing-zipkin.git"
   },
   "bugs": {
     "url": "https://github.com/eggjs/egg/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-zipkin#readme",
+  "homepage": "https://github.com/eggjs/egg-opentracing-zipkin#readme",
   "author": "popomore",
   "license": "MIT"
 }
