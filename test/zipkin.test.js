@@ -40,7 +40,7 @@ describe('test/zipkin.test.js', () => {
       .get('/')
       .expect(200);
 
-    await sleep(3000);
+    await sleep(5000);
     const [ app1span1, app1span2, app2span ] = server.spans;
 
     assert(app1span1.traceId);
@@ -89,7 +89,7 @@ describe('test/zipkin.test.js', () => {
       .get('/span')
       .expect(200);
 
-    await sleep(3000);
+    await sleep(5000);
     const span = server.spans[1];
     assert(!span.kind);
     assert(span.name === 'test');
